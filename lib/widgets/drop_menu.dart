@@ -6,7 +6,8 @@ class DropMenu extends StatefulWidget {
   final Function newNote;
   final Function shareAll;
   final Function showSettings;
-  const DropMenu(this.netCheck, this.newNote, this.shareAll, this.showSettings, {super.key});
+  const DropMenu(this.netCheck, this.newNote, this.shareAll, this.showSettings,
+      {super.key});
 
   @override
   State<DropMenu> createState() => _DropMenuState();
@@ -24,12 +25,12 @@ class _DropMenuState extends State<DropMenu> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    
+
     return MenuAnchor(
       childFocusNode: _buttonFocusNode,
       style: MenuStyle(
         backgroundColor: WidgetStateProperty.all(
-          isDark 
+          isDark
               ? const Color(0xFF09090B) // Zinc-950
               : const Color(0xFFFFFFFF), // Pure white
         ),

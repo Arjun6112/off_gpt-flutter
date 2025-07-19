@@ -29,7 +29,7 @@
   "l_a2": "Enter the address of the Olama server in the settings and save it, then you can connect to the server from the main screen",
   "l_q3": "How do I analyze images?",
   "l_a3": "The ollama server should have a pre-installed LLM that can analyze images, for example, llama3.2. \n\nThen you can select an image in the app, ask questions and get answers.",
-  "l_success": "Connection success",
+  "l_success": "Connected",
   "l_error": "Connection failure",
   "l_success_url": "You have been connected to the server",
   "l_error_url": "Unable to connect to the server",

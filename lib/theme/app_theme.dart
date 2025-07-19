@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 /// Modern Minimal Pastel Color Palette
 class AppColors {
@@ -133,96 +134,84 @@ class AppColors {
 /// Modern Typography System
 class AppTypography {
   // Display styles
-  static const TextStyle displayLarge = TextStyle(
-    fontFamily: 'SF Pro Display',
-    fontWeight: FontWeight.w700,
-    fontSize: 32,
-    height: 1.2,
-    letterSpacing: -0.5,
-  );
+  static TextStyle get displayLarge => GoogleFonts.inter(
+        fontWeight: FontWeight.w700,
+        fontSize: 32,
+        height: 1.2,
+        letterSpacing: -0.5,
+      );
 
-  static const TextStyle displayMedium = TextStyle(
-    fontFamily: 'SF Pro Display',
-    fontWeight: FontWeight.w600,
-    fontSize: 24,
-    height: 1.3,
-    letterSpacing: -0.3,
-  );
+  static TextStyle get displayMedium => GoogleFonts.inter(
+        fontWeight: FontWeight.w600,
+        fontSize: 24,
+        height: 1.3,
+        letterSpacing: -0.3,
+      );
 
-  static const TextStyle displaySmall = TextStyle(
-    fontFamily: 'SF Pro Display',
-    fontWeight: FontWeight.w600,
-    fontSize: 20,
-    height: 1.4,
-    letterSpacing: -0.2,
-  );
+  static TextStyle get displaySmall => GoogleFonts.inter(
+        fontWeight: FontWeight.w600,
+        fontSize: 20,
+        height: 1.4,
+        letterSpacing: -0.2,
+      );
 
   // Heading styles
-  static const TextStyle headingLarge = TextStyle(
-    fontFamily: 'SF Pro Text',
-    fontWeight: FontWeight.w600,
-    fontSize: 16,
-    height: 1.4,
-    letterSpacing: -0.1,
-  );
+  static TextStyle get headingLarge => GoogleFonts.inter(
+        fontWeight: FontWeight.w600,
+        fontSize: 16,
+        height: 1.4,
+        letterSpacing: -0.1,
+      );
 
-  static const TextStyle headingMedium = TextStyle(
-    fontFamily: 'SF Pro Text',
-    fontWeight: FontWeight.w600,
-    fontSize: 14,
-    height: 1.5,
-  );
+  static TextStyle get headingMedium => GoogleFonts.inter(
+        fontWeight: FontWeight.w600,
+        fontSize: 14,
+        height: 1.5,
+      );
 
-  static const TextStyle headingSmall = TextStyle(
-    fontFamily: 'SF Pro Text',
-    fontWeight: FontWeight.w600,
-    fontSize: 12,
-    height: 1.5,
-  );
+  static TextStyle get headingSmall => GoogleFonts.inter(
+        fontWeight: FontWeight.w600,
+        fontSize: 12,
+        height: 1.5,
+      );
 
   // Body styles
-  static const TextStyle bodyLarge = TextStyle(
-    fontFamily: 'SF Pro Text',
-    fontWeight: FontWeight.w400,
-    fontSize: 14,
-    height: 1.6,
-  );
+  static TextStyle get bodyLarge => GoogleFonts.inter(
+        fontWeight: FontWeight.w400,
+        fontSize: 14,
+        height: 1.6,
+      );
 
-  static const TextStyle bodyMedium = TextStyle(
-    fontFamily: 'SF Pro Text',
-    fontWeight: FontWeight.w400,
-    fontSize: 12,
-    height: 1.6,
-  );
+  static TextStyle get bodyMedium => GoogleFonts.inter(
+        fontWeight: FontWeight.w400,
+        fontSize: 12,
+        height: 1.6,
+      );
 
-  static const TextStyle bodySmall = TextStyle(
-    fontFamily: 'SF Pro Text',
-    fontWeight: FontWeight.w400,
-    fontSize: 10,
-    height: 1.5,
-  );
+  static TextStyle get bodySmall => GoogleFonts.inter(
+        fontWeight: FontWeight.w400,
+        fontSize: 10,
+        height: 1.5,
+      );
 
   // Label styles
-  static const TextStyle labelLarge = TextStyle(
-    fontFamily: 'SF Pro Text',
-    fontWeight: FontWeight.w500,
-    fontSize: 12,
-    height: 1.4,
-  );
+  static TextStyle get labelLarge => GoogleFonts.inter(
+        fontWeight: FontWeight.w500,
+        fontSize: 12,
+        height: 1.4,
+      );
 
-  static const TextStyle labelMedium = TextStyle(
-    fontFamily: 'SF Pro Text',
-    fontWeight: FontWeight.w500,
-    fontSize: 10,
-    height: 1.4,
-  );
+  static TextStyle get labelMedium => GoogleFonts.inter(
+        fontWeight: FontWeight.w500,
+        fontSize: 10,
+        height: 1.4,
+      );
 
-  static const TextStyle labelSmall = TextStyle(
-    fontFamily: 'SF Pro Text',
-    fontWeight: FontWeight.w500,
-    fontSize: 8,
-    height: 1.4,
-  );
+  static TextStyle get labelSmall => GoogleFonts.inter(
+        fontWeight: FontWeight.w500,
+        fontSize: 8,
+        height: 1.4,
+      );
 }
 
 /// Modern Spacing System

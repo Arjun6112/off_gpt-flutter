@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/modern_components.dart';
 
 class QTextField extends StatefulWidget {
   final String label;
@@ -45,17 +44,82 @@ class _QTextFieldState extends State<QTextField> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
-      padding: const EdgeInsets.only(bottom: 20),
-      child: ModernTextField(
-        label: widget.label,
-        hint: widget.hint,
-        helperText: widget.helperText,
-        controller: widget.controller,
-        maxLines: widget.maxLines,
-        keyboardType:
-            widget.maxLines > 1 ? TextInputType.multiline : TextInputType.text,
-        onChanged: widget.onChanged,
+      margin: const EdgeInsets.only(bottom: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            widget.label,
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: isDark ? const Color(0xFFFAFAFA) : const Color(0xFF09090B),
+              letterSpacing: -0.1,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Container(
+            decoration: BoxDecoration(
+              color: isDark ? const Color(0xFF18181B) : const Color(0xFFE4E4E7),
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: _focusNode.hasFocus
+                    ? (isDark
+                        ? const Color(0xFF3F3F46)
+                        : const Color(0xFFD4D4D8))
+                    : (isDark
+                        ? const Color(0xFF27272A)
+                        : const Color(0xFFE4E4E7)),
+                width: 1,
+              ),
+            ),
+            child: TextField(
+              controller: widget.controller,
+              focusNode: _focusNode,
+              maxLines: widget.maxLines,
+              keyboardType: widget.maxLines > 1
+                  ? TextInputType.multiline
+                  : TextInputType.text,
+              style: TextStyle(
+                color:
+                    isDark ? const Color(0xFFFAFAFA) : const Color(0xFF09090B),
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+                letterSpacing: -0.1,
+              ),
+              decoration: InputDecoration(
+                hintText: widget.hint,
+                hintStyle: TextStyle(
+                  color: isDark
+                      ? const Color(0xFF71717A)
+                      : const Color(0xFF71717A),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                ),
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.all(12),
+              ),
+              onChanged: (value) {
+                setState(() {}); // Update focus state
+              },
+            ),
+          ),
+          if (widget.helperText != null) ...[
+            const SizedBox(height: 4),
+            Text(
+              widget.helperText!,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                color:
+                    isDark ? const Color(0xFF71717A) : const Color(0xFF71717A),
+              ),
+            ),
+          ],
+        ],
       ),
     );
   }

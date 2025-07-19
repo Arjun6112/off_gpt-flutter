@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'views/drawer.dart';
 import 'views/desktop_view.dart';
@@ -50,8 +51,13 @@ class OffGPT extends StatelessWidget {
           supportedLocales: context.supportedLocales,
           locale: context.locale,
           localizationsDelegates: context.localizationDelegates,
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
+          theme: AppTheme.lightTheme.copyWith(
+            textTheme:
+                GoogleFonts.interTextTheme(AppTheme.lightTheme.textTheme),
+          ),
+          darkTheme: AppTheme.darkTheme.copyWith(
+            textTheme: GoogleFonts.interTextTheme(AppTheme.darkTheme.textTheme),
+          ),
           themeMode: themeProvider.themeMode,
           home: const InitializationWrapper(),
         );

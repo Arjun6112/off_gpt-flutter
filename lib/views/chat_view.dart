@@ -157,11 +157,45 @@ class _ChatViewState extends State<ChatView> {
     setState(() {});
 
     if (result) {
-      showToast(tr("l_success"),
-          context: context, position: StyledToastPosition.center);
+      showToast(
+        tr("l_success"),
+        context: context,
+        position: StyledToastPosition.center,
+        backgroundColor: const Color(0xFF10B981), // Emerald-500
+        textStyle: const TextStyle(
+          color: Colors.white,
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          letterSpacing: -0.1,
+        ),
+        borderRadius: BorderRadius.circular(8),
+        duration: const Duration(seconds: 2),
+        animation: StyledToastAnimation.slideFromBottom,
+        reverseAnimation: StyledToastAnimation.slideToBottom,
+        animDuration: const Duration(milliseconds: 200),
+        curve: Curves.easeOut,
+        reverseCurve: Curves.easeIn,
+      );
     } else {
-      showToast(tr("l_error_url"),
-          context: context, position: StyledToastPosition.center);
+      showToast(
+        tr("l_error_url"),
+        context: context,
+        position: StyledToastPosition.center,
+        backgroundColor: const Color(0xFFEF4444), // Red-500
+        textStyle: const TextStyle(
+          color: Colors.white,
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          letterSpacing: -0.1,
+        ),
+        borderRadius: BorderRadius.circular(8),
+        duration: const Duration(seconds: 3),
+        animation: StyledToastAnimation.slideFromBottom,
+        reverseAnimation: StyledToastAnimation.slideToBottom,
+        animDuration: const Duration(milliseconds: 200),
+        curve: Curves.easeOut,
+        reverseCurve: Curves.easeIn,
+      );
     }
   }
 
@@ -294,8 +328,25 @@ class _ChatViewState extends State<ChatView> {
         setState(() {
           _isProcessed = false;
         });
-        showToast(tr("l_error_no_models"),
-            context: context, position: StyledToastPosition.center);
+        showToast(
+          tr("l_error_no_models"),
+          context: context,
+          position: StyledToastPosition.center,
+          backgroundColor: const Color(0xFFEF4444), // Red-500
+          textStyle: const TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            letterSpacing: -0.1,
+          ),
+          borderRadius: BorderRadius.circular(8),
+          duration: const Duration(seconds: 3),
+          animation: StyledToastAnimation.slideFromBottom,
+          reverseAnimation: StyledToastAnimation.slideToBottom,
+          animDuration: const Duration(milliseconds: 200),
+          curve: Curves.easeOut,
+          reverseCurve: Curves.easeIn,
+        );
         return;
       }
     }
@@ -435,8 +486,25 @@ class _ChatViewState extends State<ChatView> {
         _newNote();
       } else if (number == 1) {
         Clipboard.setData(ClipboardData(text: sharedData));
-        showToast(tr("l_copyed"),
-            context: context, position: StyledToastPosition.center);
+        showToast(
+          tr("l_copyed"),
+          context: context,
+          position: StyledToastPosition.center,
+          backgroundColor: const Color(0xFF10B981), // Emerald-500
+          textStyle: const TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            letterSpacing: -0.1,
+          ),
+          borderRadius: BorderRadius.circular(8),
+          duration: const Duration(seconds: 2),
+          animation: StyledToastAnimation.slideFromBottom,
+          reverseAnimation: StyledToastAnimation.slideToBottom,
+          animDuration: const Duration(milliseconds: 200),
+          curve: Curves.easeOut,
+          reverseCurve: Curves.easeIn,
+        );
       } else if (number == 2) {
         Share.share(sharedData);
       } else if (number == 3) {

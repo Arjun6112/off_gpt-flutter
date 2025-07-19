@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import '../theme/app_theme.dart';
 
 class AppTitle extends StatelessWidget {
   final double? fontSize;
@@ -15,17 +14,21 @@ class AppTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final effectiveTextColor = textColor ?? AppColors.surface(isDark);
+    final effectiveTextColor = textColor ??
+        (isDark ? const Color(0xFFFAFAFA) : const Color(0xFF09090B));
 
     return Row(
       children: [
-        SizedBox(width: 10),
-        Text(tr("l_offGPT"),
-            style: TextStyle(
-              fontSize: fontSize,
-              fontWeight: FontWeight.bold,
-              color: effectiveTextColor,
-            )),
+        const SizedBox(width: 12),
+        Text(
+          tr("l_offGPT"),
+          style: TextStyle(
+            fontSize: fontSize,
+            fontWeight: FontWeight.w600,
+            color: effectiveTextColor,
+            letterSpacing: -0.1,
+          ),
+        ),
       ],
     );
   }

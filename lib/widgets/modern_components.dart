@@ -225,9 +225,10 @@ class ModernIconButton extends StatelessWidget {
               child: Icon(
                 icon,
                 size: size ?? 18,
-                color: color ?? (isDark
-                    ? const Color(0xFFA1A1AA) // Zinc-400
-                    : const Color(0xFF64748B)), // Slate-500
+                color: color ??
+                    (isDark
+                        ? const Color(0xFFA1A1AA) // Zinc-400
+                        : const Color(0xFF64748B)), // Slate-500
               ),
             ),
           ),
@@ -254,9 +255,10 @@ class ModernIconButton extends StatelessWidget {
               child: Icon(
                 icon,
                 size: size ?? 18,
-                color: color ?? (isDark
-                    ? const Color(0xFFA1A1AA) // Zinc-400
-                    : const Color(0xFF71717A)), // Zinc-500
+                color: color ??
+                    (isDark
+                        ? const Color(0xFFA1A1AA) // Zinc-400
+                        : const Color(0xFF71717A)), // Zinc-500
               ),
             ),
           ),
@@ -276,9 +278,10 @@ class ModernIconButton extends StatelessWidget {
               child: Icon(
                 icon,
                 size: size ?? 18,
-                color: color ?? (isDark
-                    ? const Color(0xFFA1A1AA) // Zinc-400
-                    : const Color(0xFF71717A)), // Zinc-500
+                color: color ??
+                    (isDark
+                        ? const Color(0xFFA1A1AA) // Zinc-400
+                        : const Color(0xFF71717A)), // Zinc-500
               ),
             ),
           ),
@@ -510,9 +513,10 @@ class ModernAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: backgroundColor ?? (isDark 
-            ? const Color(0xFF09090B) // Zinc-950
-            : const Color(0xFFFFFFFF)), // Pure white
+        color: backgroundColor ??
+            (isDark
+                ? const Color(0xFF09090B) // Zinc-950
+                : const Color(0xFFFFFFFF)), // Pure white
         border: Border(
           bottom: BorderSide(
             color: isDark

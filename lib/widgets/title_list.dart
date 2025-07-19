@@ -4,7 +4,6 @@ import 'package:easy_localization/easy_localization.dart';
 
 import '../provider/main_provider.dart';
 import '../helpers/event_bus.dart';
-import '../theme/app_theme.dart';
 
 import 'dialogs.dart';
 
@@ -80,39 +79,68 @@ class _TitleListState extends State<TitleList> {
     }
 
     return Container(
-      color: _selectedIndex == index
-          ? AppColors.surfaceLight(isDark)
-          : Colors.transparent,
-      padding: const EdgeInsets.fromLTRB(14, 6, 10, 6),
-      child: Row(
-        children: [
-          Expanded(
+      decoration: BoxDecoration(
+        color: _selectedIndex == index
+            ? (isDark ? const Color(0xFF27272A) : const Color(0xFFF4F4F5))
+            : Colors.transparent,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(12, 8, 8, 8),
+        child: Row(
+          children: [
+            Expanded(
               child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                Text(title,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
                     style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.textPrimary(isDark))),
-                Text(_titles[index]["created"].toString(),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: isDark
+                          ? const Color(0xFFFAFAFA)
+                          : const Color(0xFF09090B),
+                      letterSpacing: -0.1,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    _titles[index]["created"].toString(),
                     style: TextStyle(
-                        fontSize: 12, color: AppColors.textSecondary(isDark)))
-              ])),
-          Row(
-            children: [
-              IconButton(
-                  onPressed: () {
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: isDark
+                          ? const Color(0xFFA1A1AA)
+                          : const Color(0xFF71717A),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              width: 32,
+              height: 32,
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(6),
+                  onTap: () {
                     _deleteQuestion(_titles[index]["groupid"]);
                   },
-                  icon: Icon(
+                  child: Icon(
                     Icons.delete_outline,
-                    size: 20,
-                    color: AppColors.textSecondary(isDark),
-                  ))
-            ],
-          )
-        ],
+                    size: 16,
+                    color: isDark
+                        ? const Color(0xFFA1A1AA)
+                        : const Color(0xFF71717A),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -145,41 +173,118 @@ class _TitleListState extends State<TitleList> {
   Widget _searchPanel() {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        border: Border.all(width: 1, color: AppColors.border(isDark)),
-        borderRadius: BorderRadius.circular(AppBorderRadius.md),
-        color: AppColors.surface(isDark),
+        border: Border.all(
+          width: 1,
+          color: isDark ? const Color(0xFF27272A) : const Color(0xFFE4E4E7),
+        ),
+        borderRadius: BorderRadius.circular(8),
+        color: isDark ? const Color(0xFF09090B) : Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 1,
+            offset: const Offset(0, 1),
+          ),
+        ],
       ),
       child: Row(
         children: [
           Expanded(
             child: TextField(
               controller: _search,
-              style: TextStyle(color: AppColors.textPrimary(isDark)),
+              style: TextStyle(
+                color:
+                    isDark ? const Color(0xFFFAFAFA) : const Color(0xFF09090B),
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+                letterSpacing: -0.1,
+              ),
               decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    color: isDark
+                        ? const Color(0xFF27272A) // Zinc-800
+                        : const Color(0xFFF4F4F5), // Zinc-200
+                    width: 1,
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    color: isDark
+                        ? const Color(0xFF27272A) // Zinc-800
+                        : const Color(0xFFF4F4F5), // Zinc-200
+                    width: 1,
+                  ),
+                ),
+                focusColor: isDark
+                    ? const Color(0xFF18181B) // Zinc-900 (darker)
+                    : const Color(0xFFE4E4E7), // Zinc-200
+                filled: true,
+
+                fillColor: isDark
+                    ? const Color(0xFF18181B) // Zinc-900 (darker)
+                    : const Color(0xFFE4E4E7), // Zinc-200
                 hintText: tr("l_search"),
-                hintStyle: TextStyle(color: AppColors.textTertiary(isDark)),
+                hintStyle: TextStyle(
+                  color: isDark
+                      ? const Color(0xFF71717A)
+                      : const Color(0xFF71717A),
+                  fontSize: 14,
+                ),
                 border: InputBorder.none,
-                contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                contentPadding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
               ),
               onSubmitted: (String value) {
                 _startSearch();
               },
             ),
           ),
-          IconButton(
-            icon: Icon(Icons.search, color: AppColors.textSecondary(isDark)),
-            onPressed: _startSearch,
+          Container(
+            width: 40,
+            height: 40,
+            margin: const EdgeInsets.all(4),
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(6),
+                onTap: _startSearch,
+                child: Icon(
+                  Icons.search,
+                  size: 16,
+                  color: isDark
+                      ? const Color(0xFFA1A1AA)
+                      : const Color(0xFF71717A),
+                ),
+              ),
+            ),
           ),
-          IconButton(
-            icon: Icon(Icons.clear, color: AppColors.textSecondary(isDark)),
-            onPressed: () {
-              FocusScope.of(context).requestFocus(FocusNode());
-              _search.text = "";
-              _loadData();
-            },
-          )
+          Container(
+            width: 40,
+            height: 40,
+            margin: const EdgeInsets.all(4),
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(6),
+                onTap: () {
+                  FocusScope.of(context).requestFocus(FocusNode());
+                  _search.text = "";
+                  _loadData();
+                },
+                child: Icon(
+                  Icons.clear,
+                  size: 16,
+                  color: isDark
+                      ? const Color(0xFFA1A1AA)
+                      : const Color(0xFF71717A),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -202,9 +307,18 @@ class _TitleListState extends State<TitleList> {
         child: ListView(
           children: [
             Container(
-              height: 100,
+              height: 120,
               alignment: Alignment.center,
-              child: Text(tr("l_no_items")),
+              child: Text(
+                tr("l_no_items"),
+                style: TextStyle(
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? const Color(0xFFA1A1AA)
+                      : const Color(0xFF71717A),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
             ),
           ],
         ),
@@ -214,11 +328,13 @@ class _TitleListState extends State<TitleList> {
     return RefreshIndicator(
       onRefresh: _onRefresh,
       child: ListView.builder(
+        padding: const EdgeInsets.symmetric(vertical: 4),
         itemCount: _titles.length,
         itemBuilder: (context, index) {
           return Material(
             color: Colors.transparent,
             child: InkWell(
+              borderRadius: BorderRadius.circular(8),
               onTap: () {
                 _selectTitle(index);
               },
@@ -235,7 +351,7 @@ class _TitleListState extends State<TitleList> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      color: AppColors.surface(isDark),
+      color: isDark ? const Color(0xFF09090B) : Colors.white,
       child: Column(
         children: [
           _searchPanel(),

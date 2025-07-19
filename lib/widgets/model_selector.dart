@@ -127,7 +127,7 @@ class _ModelSelectorState extends State<ModelSelector> {
           controller: _menuController,
           style: MenuStyle(
             backgroundColor: WidgetStateProperty.all(
-              isDark 
+              isDark
                   ? const Color(0xFF09090B) // Zinc-950
                   : const Color(0xFFFFFFFF), // Pure white
             ),
@@ -163,7 +163,8 @@ class _ModelSelectorState extends State<ModelSelector> {
                     },
                     borderRadius: BorderRadius.circular(8),
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 8),
                       decoration: BoxDecoration(
                         color: provider.selectedModel == option
                             ? (isDark
@@ -219,7 +220,8 @@ class _ModelSelectorState extends State<ModelSelector> {
                 },
                 borderRadius: BorderRadius.circular(8),
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                   ),

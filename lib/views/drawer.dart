@@ -6,7 +6,6 @@ import '../widgets/title_list.dart';
 import '../widgets/model_selector.dart';
 import '../widgets/list_header.dart';
 import '../widgets/modern_components.dart';
-import '../theme/app_theme.dart';
 
 import 'chat_view.dart';
 
@@ -71,17 +70,33 @@ class _MyDrawerState extends State<MyDrawer> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.surface(isDark),
-        borderRadius: const BorderRadius.only(
-          topRight: Radius.circular(AppBorderRadius.lg),
-          bottomRight: Radius.circular(AppBorderRadius.lg),
+        color: isDark
+            ? const Color(0xFF09090B) // Zinc-950
+            : const Color(0xFFFFFFFF), // Pure white
+        border: Border(
+          right: BorderSide(
+            color: isDark
+                ? const Color(0xFF27272A) // Zinc-800
+                : const Color(0xFFE4E4E7), // Zinc-200
+            width: 1,
+          ),
         ),
+        boxShadow: [
+          BoxShadow(
+            color: isDark
+                ? Colors.black.withValues(alpha: 0.5)
+                : Colors.black.withValues(alpha: 0.1),
+            blurRadius: 20,
+            offset: const Offset(4, 0),
+            spreadRadius: 0,
+          ),
+        ],
       ),
       child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // ListHeader(),
+          ListHeader(),
           Expanded(child: TitleList()),
         ],
       ),
@@ -93,15 +108,22 @@ class _MyDrawerState extends State<MyDrawer> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return AdvancedDrawer(
-      backdropColor: AppColors.primary(isDark).withValues(alpha: 0.7),
+      backdropColor: isDark
+          ? Colors.black.withValues(alpha: 0.7)
+          : Colors.black.withValues(alpha: 0.4),
       controller: _drawer,
-      animateChildDecoration: true,
+      animateChildDecoration: false, // Less animated, more Android-like
       rtlOpening: false,
-      openScale: 1.0,
+      openScale: 0.95, // Subtle scale effect
       openRatio: 0.8,
-      disabledGestures: true,
+      disabledGestures: false, // Enable gestures for Android-like behavior
+      animationDuration:
+          const Duration(milliseconds: 200), // Faster, Android-like
+      animationCurve: Curves.easeOut, // Clean easing
       child: Scaffold(
-        backgroundColor: AppColors.background(isDark),
+        backgroundColor: isDark
+            ? const Color(0xFF0A0A0A) // Near black
+            : const Color(0xFFFFFFFF), // Pure white
         appBar: _appbar(),
         body: Container(child: _currentWidget),
       ),
