@@ -5,7 +5,6 @@ import 'package:easy_localization/easy_localization.dart';
 
 import '../provider/main_provider.dart';
 import '../helpers/event_bus.dart';
-import '../theme/app_theme.dart';
 
 class ModelSelector extends StatefulWidget {
   const ModelSelector({super.key});
@@ -66,23 +65,57 @@ class _ModelSelectorState extends State<ModelSelector> {
       builder: (context, provider, child) {
         if (_isLoading) {
           return SizedBox(
-            width: 24,
-            height: 24,
+            width: 20,
+            height: 20,
             child: CircularProgressIndicator(
               strokeWidth: 2,
-              valueColor:
-                  AlwaysStoppedAnimation<Color>(AppColors.surface(isDark)),
+              valueColor: AlwaysStoppedAnimation<Color>(
+                isDark
+                    ? const Color(0xFF71717A) // Zinc-500
+                    : const Color(0xFF71717A), // Zinc-500
+              ),
             ),
           );
         }
 
         if (_models.isEmpty) {
-          return TextButton.icon(
-            onPressed: null,
-            icon: Text(tr("l_no_models"),
-                style: TextStyle(
-                    color: AppColors.error, fontWeight: FontWeight.bold)),
-            label: Icon(Icons.error_outline, color: AppColors.error),
+          return Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            decoration: BoxDecoration(
+              color: isDark
+                  ? const Color(0xFF18181B) // Zinc-900
+                  : const Color(0xFFFEF2F2), // Red-50
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: isDark
+                    ? const Color(0xFF7F1D1D) // Red-900
+                    : const Color(0xFFFECACA), // Red-200
+                width: 1,
+              ),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.error_outline_rounded,
+                  size: 16,
+                  color: isDark
+                      ? const Color(0xFFF87171) // Red-400
+                      : const Color(0xDC2626), // Red-600
+                ),
+                const SizedBox(width: 6),
+                Text(
+                  tr("l_no_models"),
+                  style: TextStyle(
+                    color: isDark
+                        ? const Color(0xFFF87171) // Red-400
+                        : const Color(0xDC2626), // Red-600
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
           );
         }
 
@@ -90,34 +123,132 @@ class _ModelSelectorState extends State<ModelSelector> {
             (_models.isNotEmpty ? _models.first : tr("l_no_model"));
 
         return MenuAnchor(
-          alignmentOffset: Offset(0, 8),
+          alignmentOffset: const Offset(0, 8),
           controller: _menuController,
+          style: MenuStyle(
+            backgroundColor: WidgetStateProperty.all(
+              isDark 
+                  ? const Color(0xFF09090B) // Zinc-950
+                  : const Color(0xFFFFFFFF), // Pure white
+            ),
+            surfaceTintColor: WidgetStateProperty.all(Colors.transparent),
+            elevation: WidgetStateProperty.all(8),
+            side: WidgetStateProperty.all(
+              BorderSide(
+                color: isDark
+                    ? const Color(0xFF27272A) // Zinc-800
+                    : const Color(0xFFE4E4E7), // Zinc-200
+                width: 1,
+              ),
+            ),
+            shape: WidgetStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+            padding: WidgetStateProperty.all(
+              const EdgeInsets.symmetric(vertical: 8),
+            ),
+          ),
           menuChildren: <Widget>[
             for (final String option in _models)
-              MenuItemButton(
-                onPressed: () {
-                  provider.setSelectedModel(option);
-                  _menuController.close();
-                },
-                child: Text(option,
-                    style: TextStyle(color: AppColors.textPrimary(isDark))),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 4),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      provider.setSelectedModel(option);
+                      _menuController.close();
+                    },
+                    borderRadius: BorderRadius.circular(8),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: provider.selectedModel == option
+                            ? (isDark
+                                ? const Color(0xFF18181B) // Zinc-900
+                                : const Color(0xFFF1F5F9)) // Slate-100
+                            : Colors.transparent,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Row(
+                        children: [
+                          if (provider.selectedModel == option)
+                            Padding(
+                              padding: const EdgeInsets.only(right: 8),
+                              child: Icon(
+                                Icons.check_rounded,
+                                size: 16,
+                                color: isDark
+                                    ? const Color(0xFF22C55E) // Green-500
+                                    : const Color(0xFF16A34A), // Green-600
+                              ),
+                            ),
+                          Expanded(
+                            child: Text(
+                              option,
+                              style: TextStyle(
+                                color: isDark
+                                    ? const Color(0xFFF4F4F5) // Zinc-100
+                                    : const Color(0xFF09090B), // Zinc-950
+                                fontSize: 14,
+                                fontWeight: provider.selectedModel == option
+                                    ? FontWeight.w500
+                                    : FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ),
           ],
           builder: (context, controller, child) {
-            return TextButton.icon(
-              onPressed: () {
-                if (controller.isOpen) {
-                  controller.close();
-                } else {
-                  controller.open();
-                }
-              },
-              icon: Text(displayModel,
-                  style: TextStyle(
-                      color: AppColors.accent(isDark),
-                      fontWeight: FontWeight.bold)),
-              label:
-                  Icon(Icons.arrow_drop_down, color: AppColors.surface(isDark)),
+            return Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () {
+                  if (controller.isOpen) {
+                    controller.close();
+                  } else {
+                    controller.open();
+                  }
+                },
+                borderRadius: BorderRadius.circular(8),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        displayModel,
+                        style: TextStyle(
+                          color: isDark
+                              ? const Color(0xFFF4F4F5) // Zinc-100
+                              : const Color(0xFF09090B), // Zinc-950
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: -0.1,
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                      Icon(
+                        Icons.keyboard_arrow_down_rounded,
+                        size: 18,
+                        color: isDark
+                            ? const Color(0xFF71717A) // Zinc-500
+                            : const Color(0xFF71717A), // Zinc-500
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             );
           },
         );

@@ -202,37 +202,86 @@ class ModernIconButton extends StatelessWidget {
 
     switch (style) {
       case IconButtonStyle.filled:
-        return Container(
-          decoration: BoxDecoration(
-            color: AppColors.surfaceLight(isDark),
-            borderRadius: BorderRadius.circular(AppBorderRadius.md),
-          ),
-          child: IconButton(
-            icon: Icon(icon),
-            onPressed: onPressed,
-            iconSize: size ?? 24,
-            color: color ?? AppColors.textSecondary(isDark),
+        return Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: onPressed,
+            borderRadius: BorderRadius.circular(8),
+            child: Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                color: isDark
+                    ? const Color(0xFF18181B) // Zinc-900
+                    : const Color(0xFFF1F5F9), // Slate-100
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: isDark
+                      ? const Color(0xFF27272A) // Zinc-800
+                      : const Color(0xFFE2E8F0), // Slate-200
+                  width: 1,
+                ),
+              ),
+              child: Icon(
+                icon,
+                size: size ?? 18,
+                color: color ?? (isDark
+                    ? const Color(0xFFA1A1AA) // Zinc-400
+                    : const Color(0xFF64748B)), // Slate-500
+              ),
+            ),
           ),
         );
       case IconButtonStyle.outline:
-        return Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: AppColors.border(isDark)),
-            borderRadius: BorderRadius.circular(AppBorderRadius.md),
-          ),
-          child: IconButton(
-            icon: Icon(icon),
-            onPressed: onPressed,
-            iconSize: size ?? 24,
-            color: color ?? AppColors.textSecondary(isDark),
+        return Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: onPressed,
+            borderRadius: BorderRadius.circular(8),
+            child: Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: isDark
+                      ? const Color(0xFF27272A) // Zinc-800
+                      : const Color(0xFFE4E4E7), // Zinc-200
+                  width: 1,
+                ),
+              ),
+              child: Icon(
+                icon,
+                size: size ?? 18,
+                color: color ?? (isDark
+                    ? const Color(0xFFA1A1AA) // Zinc-400
+                    : const Color(0xFF71717A)), // Zinc-500
+              ),
+            ),
           ),
         );
       case IconButtonStyle.normal:
-        return IconButton(
-          icon: Icon(icon),
-          onPressed: onPressed,
-          iconSize: size ?? 24,
-          color: color ?? AppColors.textSecondary(isDark),
+        return Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: onPressed,
+            borderRadius: BorderRadius.circular(8),
+            child: Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Icon(
+                icon,
+                size: size ?? 18,
+                color: color ?? (isDark
+                    ? const Color(0xFFA1A1AA) // Zinc-400
+                    : const Color(0xFF71717A)), // Zinc-500
+              ),
+            ),
+          ),
         );
     }
   }
@@ -459,16 +508,59 @@ class ModernAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    return AppBar(
-      title: title,
-      leading: leading,
-      actions: actions,
-      centerTitle: centerTitle,
-      backgroundColor: backgroundColor ?? AppColors.surface(isDark),
-      elevation: elevation ?? 0,
-      scrolledUnderElevation: 0,
-      surfaceTintColor: Colors.transparent,
-      iconTheme: IconThemeData(color: AppColors.textSecondary(isDark)),
+    return Container(
+      decoration: BoxDecoration(
+        color: backgroundColor ?? (isDark 
+            ? const Color(0xFF09090B) // Zinc-950
+            : const Color(0xFFFFFFFF)), // Pure white
+        border: Border(
+          bottom: BorderSide(
+            color: isDark
+                ? const Color(0xFF27272A) // Zinc-800
+                : const Color(0xFFE4E4E7), // Zinc-200
+            width: 1,
+          ),
+        ),
+      ),
+      child: SafeArea(
+        bottom: false,
+        child: Container(
+          height: kToolbarHeight,
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Row(
+            children: [
+              if (leading != null) ...[
+                leading!,
+                const SizedBox(width: 8),
+              ],
+              if (centerTitle) const Spacer(),
+              if (title != null)
+                Expanded(
+                  flex: centerTitle ? 0 : 1,
+                  child: DefaultTextStyle(
+                    style: TextStyle(
+                      color: isDark
+                          ? const Color(0xFFF4F4F5) // Zinc-100
+                          : const Color(0xFF09090B), // Zinc-950
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: -0.1,
+                    ),
+                    child: title!,
+                  ),
+                ),
+              if (centerTitle) const Spacer(),
+              if (actions != null) ...[
+                const SizedBox(width: 8),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: actions!,
+                ),
+              ],
+            ],
+          ),
+        ),
+      ),
     );
   }
 
