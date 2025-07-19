@@ -700,18 +700,21 @@ class _ChatViewState extends State<ChatView> {
               inputTextDecoration: InputDecoration(
                 hintText: tr("l_input_question"),
                 border: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 16,
-                  vertical: 12,
+                  vertical: 14,
                 ),
                 hintStyle: TextStyle(
                   color: isDark
                       ? const Color(0xFF71717A) // Zinc-500
-                      : const Color(0xFF64748B), // Slate-500
-                  fontSize: 15,
+                      : const Color(0xFF71717A), // Zinc-500
+                  fontSize: 14,
                   fontWeight: FontWeight.w400,
                   letterSpacing: -0.1,
                 ),
+                filled: false,
               ),
 
               // Modern message bubble styling - shadcn inspired
@@ -737,29 +740,29 @@ class _ChatViewState extends State<ChatView> {
                   ? const Color(0xFF0A0A0A) // Near black
                   : const Color(0xFFFFFFFF), // Pure white
 
-              // Modern input styling
+              // Modern input styling - shadcn inspired
               inputBackgroundColor: Colors.transparent,
               inputTextCursorColor: isDark
                   ? const Color(0xFFF4F4F5) // Zinc-100
-                  : const Color(0xFF18181B), // Zinc-900
+                  : const Color(0xFF09090B), // Zinc-950
               inputTextColor: isDark
                   ? const Color(0xFFF4F4F5) // Zinc-100
-                  : const Color(0xFF18181B), // Zinc-900
-              inputBorderRadius: BorderRadius.circular(24),
+                  : const Color(0xFF09090B), // Zinc-950
+              inputBorderRadius: BorderRadius.circular(16),
 
               // Modern input margins - shadcn style
-              inputMargin: const EdgeInsets.fromLTRB(16, 8, 16, 20),
+              inputMargin: const EdgeInsets.fromLTRB(16, 8, 16, 24),
               inputPadding: const EdgeInsets.symmetric(
-                horizontal: 4,
-                vertical: 4,
+                horizontal: 6,
+                vertical: 6,
               ),
 
-              // Clean text styling
+              // Clean shadcn text styling
               inputTextStyle: TextStyle(
-                fontSize: 15,
+                fontSize: 14,
                 color: isDark
                     ? const Color(0xFFF4F4F5) // Zinc-100
-                    : const Color(0xFF18181B), // Zinc-900
+                    : const Color(0xFF09090B), // Zinc-950
                 fontWeight: FontWeight.w400,
                 height: 1.4,
                 letterSpacing: -0.1,
@@ -787,65 +790,53 @@ class _ChatViewState extends State<ChatView> {
 
               // Modern shadcn-inspired icons
               attachmentButtonIcon: Container(
-                width: 40,
-                height: 40,
+                width: 36,
+                height: 36,
                 decoration: BoxDecoration(
-                  color: isDark
-                      ? const Color(0xFF18181B) // Zinc-900
-                      : const Color(0xFFF1F5F9), // Slate-100
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(
-                    color: isDark
-                        ? const Color(0xFF27272A) // Zinc-800
-                        : const Color(0xFFE2E8F0), // Slate-200
-                    width: 1,
-                  ),
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(8),
                 ),
                 child: Icon(
                   Icons.attach_file_rounded,
                   color: isDark
-                      ? const Color(0xFFA1A1AA) // Zinc-400
-                      : const Color(0xFF64748B), // Slate-500
-                  size: 18,
+                      ? const Color(0xFF71717A) // Zinc-500
+                      : const Color(0xFF71717A), // Zinc-500
+                  size: 16,
                 ),
               ),
               sendButtonIcon: Container(
-                width: 40,
-                height: 40,
+                width: 36,
+                height: 36,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      const Color(0xFF0F172A), // Slate-900
-                      const Color(0xFF1E293B), // Slate-800
-                    ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
+                  color: isDark
+                      ? const Color(0xFFF4F4F5) // Zinc-100
+                      : const Color(0xFF09090B), // Zinc-950
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: isDark
+                        ? const Color(0xFF27272A) // Zinc-800
+                        : const Color(0xFFE4E4E7), // Zinc-200
+                    width: 1,
                   ),
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color(0xFF0F172A).withValues(alpha: 0.3),
-                      blurRadius: 8,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.arrow_upward_rounded,
-                  color: Color(0xFFF8FAFC), // Slate-50
-                  size: 18,
+                  color: isDark
+                      ? const Color(0xFF09090B) // Zinc-950
+                      : const Color(0xFFF4F4F5), // Zinc-100
+                  size: 16,
                 ),
               ),
 
               // Button margins for clean spacing
-              attachmentButtonMargin: const EdgeInsets.only(left: 8),
-              sendButtonMargin: const EdgeInsets.only(right: 8),
+              attachmentButtonMargin: const EdgeInsets.only(left: 6),
+              sendButtonMargin: const EdgeInsets.only(right: 6),
 
               // Modern input container - shadcn inspired
               inputContainerDecoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24),
+                borderRadius: BorderRadius.circular(16),
                 color: isDark
-                    ? const Color(0xFF09090B).withValues(alpha: 0.8) // Zinc-950
+                    ? const Color(0xFF09090B) // Zinc-950
                     : const Color(0xFFFFFFFF), // Pure white
                 border: Border.all(
                   color: isDark
@@ -854,22 +845,22 @@ class _ChatViewState extends State<ChatView> {
                   width: 1,
                 ),
                 boxShadow: [
-                  // Primary shadow
+                  // Subtle shadow for depth
                   BoxShadow(
                     color: isDark
-                        ? Colors.black.withValues(alpha: 0.5)
-                        : Colors.black.withValues(alpha: 0.05),
-                    blurRadius: 10,
-                    offset: const Offset(0, 4),
+                        ? Colors.black.withValues(alpha: 0.3)
+                        : Colors.black.withValues(alpha: 0.04),
+                    blurRadius: 6,
+                    offset: const Offset(0, 2),
                     spreadRadius: 0,
                   ),
-                  // Soft outer glow
+                  // Very subtle outer glow
                   BoxShadow(
                     color: isDark
-                        ? Colors.black.withValues(alpha: 0.2)
+                        ? Colors.black.withValues(alpha: 0.1)
                         : Colors.black.withValues(alpha: 0.02),
-                    blurRadius: 20,
-                    offset: const Offset(0, 8),
+                    blurRadius: 12,
+                    offset: const Offset(0, 4),
                     spreadRadius: 0,
                   ),
                 ],
@@ -935,7 +926,6 @@ class _ChatViewState extends State<ChatView> {
         children: [
           GestureDetector(
             onTap: () {
-              // 화면의 빈 공간을 터치하면 키보드 숨기기
               FocusScope.of(context).unfocus();
             },
             child: _chatUI(),
