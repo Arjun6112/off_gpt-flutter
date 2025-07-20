@@ -1,0 +1,19 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" rx="120" fill="#1a1a1a"/>
+  
+  <!-- Main icon - Minimalist thick lines forming an abstract "O" shape -->
+  <g transform="translate(256, 256)">
+    <!-- Outer thick lines forming a square-like shape -->
+    <rect x="-80" y="-80" width="20" height="160" rx="10" fill="#ffffff"/>
+    <rect x="60" y="-80" width="20" height="160" rx="10" fill="#ffffff"/>
+    <rect x="-80" y="-80" width="160" height="20" rx="10" fill="#ffffff"/>
+    <rect x="-80" y="60" width="160" height="20" rx="10" fill="#ffffff"/>
+    
+    <!-- Inner accent lines -->
+    <rect x="-40" y="-40" width="12" height="80" rx="6" fill="#ffffff" opacity="0.7"/>
+    <rect x="28" y="-40" width="12" height="80" rx="6" fill="#ffffff" opacity="0.7"/>
+    <rect x="-40" y="-40" width="80" height="12" rx="6" fill="#ffffff" opacity="0.7"/>
+    <rect x="-40" y="28" width="80" height="12" rx="6" fill="#ffffff" opacity="0.7"/>
+  </g>
+</svg>
