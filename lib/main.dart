@@ -113,6 +113,7 @@ class _InitializationWrapperState extends State<InitializationWrapper> {
       builder: (context, provider, _) {
         if (!provider.isInitialized) {
           return Scaffold(
+            backgroundColor: const Color(0xFF18181B), // Zinc-900
             body: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

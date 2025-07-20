@@ -23,6 +23,7 @@
   "l_confirm": "Confirm",
   "l_cancel": "Cancel",
   "l_no_models": "No model",
+  "l_no_items": "No chats found",
   "l_q1": "What is OffGPT?",
   "l_a1": "OffGPT is a client app that communicates with the Olama server. Users can ask questions to the LLM installed on the server through OffGPT",
   "l_q2": "How do I connect to the Olama server?",

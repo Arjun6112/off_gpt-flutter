@@ -134,7 +134,7 @@ class ChatService {
         final tokensPerSecond = tokens / seconds;
 
         answer += "\n\n Model-$modelName   " +
-            "\nToken/Sec: ${tokensPerSecond.toStringAsFixed(1)}";
+            "\n Speed - ${tokensPerSecond.toStringAsFixed(1)} Token/Sec";
 
         onMessageUpdate(answer);
 

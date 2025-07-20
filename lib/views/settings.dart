@@ -290,11 +290,6 @@ class _MySettingsState extends State<MySettings> {
           tr("l_delete_all"), Icons.arrow_forward_ios, () {
         _deleteAllRecords();
       }),
-
-      ActionCardPanel(Icons.settings_applications_outlined, tr("l_app_info"),
-          null, Icons.arrow_forward_ios, () {
-        AppSettings.openAppSettings();
-      }),
     ];
 
     final content = Container(

@@ -34,7 +34,7 @@ class QDatabase {
       print("Web platform detected - SQLite database disabled");
       return null;
     }
-    
+
     if (_database != null) return _database!;
     _database = await _initDB('offGPT.db');
     _makeFirstRow();
@@ -59,7 +59,7 @@ class QDatabase {
       print("Web platform - skipping initial database rows");
       return;
     }
-    
+
     final db = await _instance.init();
     if (db == null) return;
 
@@ -97,7 +97,7 @@ class QDatabase {
       print("Web platform - skipping question insert");
       return;
     }
-    
+
     try {
       String created = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
       final db = await _instance.init();
@@ -116,7 +116,7 @@ class QDatabase {
     if (_isWeb) {
       return [];
     }
-    
+
     final db = await _instance.init();
     if (db == null) return [];
     return await db
@@ -129,7 +129,7 @@ class QDatabase {
     if (_isWeb) {
       return [];
     }
-    
+
     final db = await _instance.init();
     if (db == null) return [];
     List details = await db.rawQuery(
@@ -144,7 +144,7 @@ class QDatabase {
     if (_isWeb) {
       return [];
     }
-    
+
     final db = await _instance.init();
     if (db == null) return [];
     List details =
@@ -158,7 +158,7 @@ class QDatabase {
     if (_isWeb) {
       return [];
     }
-    
+
     final db = await _instance.init();
     if (db == null) return [];
     final sql = "SELECT * FROM questions m " +
@@ -174,7 +174,7 @@ class QDatabase {
       print("Web platform - skipping question deletion");
       return;
     }
-    
+
     try {
       final db = await _instance.init();
       if (db == null) return;
@@ -191,7 +191,7 @@ class QDatabase {
       print("Web platform - skipping record deletion");
       return;
     }
-    
+
     try {
       final db = await _instance.init();
       if (db == null) return;
@@ -208,7 +208,7 @@ class QDatabase {
       print("Web platform - skipping all records deletion");
       return;
     }
-    
+
     try {
       final db = await _instance.init();
       if (db == null) return;
