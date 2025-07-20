@@ -1,7 +1,8 @@
 import 'dart:convert';
-import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
@@ -423,8 +424,8 @@ class _ChatViewState extends State<ChatView> {
         maxWidth: 500,
         maxHeight: 500);
     if (image != null) {
-      File file = File(image.path);
-      List<int> imageBytes = file.readAsBytesSync();
+      // Use XFile.readAsBytes() which works on all platforms including web
+      Uint8List imageBytes = await image.readAsBytes();
       _selectedImage = base64Encode(imageBytes);
       _makeImageMessageAdd(_selectedImage!);
     }

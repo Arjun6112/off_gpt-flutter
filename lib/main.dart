@@ -1,5 +1,5 @@
-import 'dart:io';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -17,7 +17,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
-  if (Platform.isWindows) {
+  // Initialize sqflite for desktop platforms (not web)
+  if (!kIsWeb && defaultTargetPlatform == TargetPlatform.windows) {
     sqfliteFfiInit();
     databaseFactory = databaseFactoryFfi;
   }

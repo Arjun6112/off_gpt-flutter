@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -19,6 +21,7 @@ class _TitleListState extends State<TitleList> {
   List _titles = [];
   int _selectedIndex = 0;
   final TextEditingController _search = TextEditingController();
+  Timer? _debounce;
 
   @override
   void initState() {
@@ -238,51 +241,16 @@ class _TitleListState extends State<TitleList> {
                 border: InputBorder.none,
                 contentPadding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
               ),
-              onSubmitted: (String value) {
-                _startSearch();
+              onChanged: (String value) {
+                if (_debounce?.isActive ?? false) _debounce!.cancel();
+                if (value.isEmpty) {
+                  _loadData(refresh: true);
+                } else {
+                  _debounce = Timer(const Duration(milliseconds: 500), () {
+                    _startSearch();
+                  });
+                }
               },
-            ),
-          ),
-          Container(
-            width: 40,
-            height: 40,
-            margin: const EdgeInsets.all(4),
-            child: Material(
-              color: Colors.transparent,
-              child: InkWell(
-                borderRadius: BorderRadius.circular(6),
-                onTap: _startSearch,
-                child: Icon(
-                  Icons.search,
-                  size: 16,
-                  color: isDark
-                      ? const Color(0xFFA1A1AA)
-                      : const Color(0xFF71717A),
-                ),
-              ),
-            ),
-          ),
-          Container(
-            width: 40,
-            height: 40,
-            margin: const EdgeInsets.all(4),
-            child: Material(
-              color: Colors.transparent,
-              child: InkWell(
-                borderRadius: BorderRadius.circular(6),
-                onTap: () {
-                  FocusScope.of(context).requestFocus(FocusNode());
-                  _search.text = "";
-                  _loadData();
-                },
-                child: Icon(
-                  Icons.clear,
-                  size: 16,
-                  color: isDark
-                      ? const Color(0xFFA1A1AA)
-                      : const Color(0xFF71717A),
-                ),
-              ),
             ),
           ),
         ],

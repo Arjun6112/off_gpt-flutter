@@ -119,16 +119,16 @@ class _MyDrawerState extends State<MyDrawer> {
       disabledGestures: false, // Enable gestures for Android-like behavior
       animationDuration:
           const Duration(milliseconds: 200), // Faster, Android-like
-      animationCurve: Curves.easeOut, // Clean easing
+      animationCurve: Curves.easeOut,
+      drawer: SafeArea(
+        child: _listContainer(),
+      ), // Clean easing
       child: Scaffold(
         backgroundColor: isDark
             ? const Color(0xFF0A0A0A) // Near black
             : const Color(0xFFFFFFFF), // Pure white
         appBar: _appbar(),
         body: Container(child: _currentWidget),
-      ),
-      drawer: SafeArea(
-        child: _listContainer(),
       ),
     );
   }
