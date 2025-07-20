@@ -1,7 +1,7 @@
 # OffGPT - Flutter Ollama Chat Client
 
 <div align="center">
-  <img src="assets/app_icon.png" alt="OffGPT Logo" width="120" height="120"/>
+  <imcon.png" alt="OffGPT Logo" width="120" height="120"/>
 </div>
 
 OffGPT is a modern, cross-platform chat application built with Flutter that allows you to interact with local AI models through Ollama. Experience the power of AI conversations with a beautiful, intuitive interface while keeping your data completely private and offline.
@@ -17,7 +17,27 @@ OffGPT is a modern, cross-platform chat application built with Flutter that allo
 - ⚙️ **Customizable** - Adjust temperature, instructions, and more
 - 📋 **Chat Management** - Save, organize, and export conversations
 
-## 📱 Screenshots
+## � Download
+
+### Android APK
+
+Download the latest Android APK from our releases:
+
+- **[Download APK (Universal)](releases/offgpt-v1.0.8-android-universal.apk)** - 24.7MB
+  - Compatible with all Android devices (ARM64, ARM32, x86, x86_64)
+  - Minimum Android version: 5.0 (API 21)
+  - Version: 1.0.8+41204
+
+### Other Platforms
+
+- **iOS**: Build from source (requires Xcode and Apple Developer account)
+- **macOS**: Build from source using `flutter build macos`
+- **Web**: Build from source using `flutter build web`
+- **Windows/Linux**: Build from source using `flutter build <platform>`
+
+_For installation instructions and building from source, see the [Development](#-development) section below._
+
+## �📱 Screenshots
 
 <div align="center">
 
@@ -61,7 +81,7 @@ Download the latest Android APK from our releases:
 - **Web**: Build from source using `flutter build web`
 - **Windows/Linux**: Build from source using `flutter build <platform>`
 
-*For installation instructions and building from source, see the [Development](#-development) section below.*
+_For installation instructions and building from source, see the [Development](#-development) section below._
 
 ## �🚀 Quick Start
 
