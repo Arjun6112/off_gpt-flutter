@@ -1,6 +1,6 @@
 {
   "l_settings": "設定",
-  "l_ollama_setting": "オラマの設定",
+  "l_ollama_setting": "モデル設定の調整",
   "l_server_address": "サーバーアドレス",
   "l_instructions": "LLMの指示",
   "l_temperature": "温度",

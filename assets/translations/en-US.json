@@ -1,6 +1,6 @@
 {
   "l_settings": "Settings",
-  "l_ollama_setting": "Olama settings",
+  "l_ollama_setting": "Adjust Model Settings",
   "l_server_address": "Server address",
   "l_instructions": "LLM instructions",
   "l_temperature": "Temperature",

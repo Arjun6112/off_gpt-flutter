@@ -1,6 +1,6 @@
 {
   "l_settings": "설정",
-  "l_ollama_setting": "올라마 설정",
+  "l_ollama_setting": "모델 설정 조정",
   "l_server_address": "서버 주소",
   "l_instructions": "LLM 지침",
   "l_temperture": "온도",
