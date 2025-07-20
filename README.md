@@ -1,6 +1,8 @@
 # OffGPT - Flutter Ollama Chat Client
 
-![OffGPT Logo](assets/app_icon.png)
+<div align="center">
+  <img src="assets/app_icon.png" alt="OffGPT Logo" width="120" height="120"/>
+</div>
 
 OffGPT is a modern, cross-platform chat application built with Flutter that allows you to interact with local AI models through Ollama. Experience the power of AI conversations with a beautiful, intuitive interface while keeping your data completely private and offline.
 
@@ -21,23 +23,23 @@ OffGPT is a modern, cross-platform chat application built with Flutter that allo
 
 ### Main Chat Interface
 
-![Main Chat](screenshots/chat.png)
+<img src="screenshots/chat.png" alt="Main Chat" width="300"/>
 
 ### Enhanced Model Selection
 
-![Model Selection](screenshots/models.png)
+<img src="screenshots/models.png" alt="Model Selection" width="300"/>
 
 ### Settings Configuration
 
-![Settings](screenshots/settings.png)
+<img src="screenshots/settings.png" alt="Settings" width="300"/>
 
 ### Initial Setup
 
-![Setup](screenshots/setup.png)
+<img src="screenshots/setup.png" alt="Setup" width="300"/>
 
 ### Dark Theme
 
-![Dark Theme](screenshots/dark_theme.png)
+<img src="screenshots/dark_theme.png" alt="Dark Theme" width="300"/>
 
 </div>
 
@@ -176,16 +178,6 @@ lib/
 ├── helpers/              # Utilities and helpers
 └── theme/                # App theming
 ```
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Troubleshooting
 
 ### Common Issues
 
