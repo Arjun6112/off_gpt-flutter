@@ -43,7 +43,27 @@ OffGPT is a modern, cross-platform chat application built with Flutter that allo
 
 </div>
 
-## 🚀 Quick Start
+## � Download
+
+### Android APK
+
+Download the latest Android APK from our releases:
+
+- **[Download APK (Universal)](build/app/outputs/flutter-apk/app-release.apk)** - 24.7MB
+  - Compatible with all Android devices (ARM64, ARM32, x86, x86_64)
+  - Minimum Android version: 5.0 (API 21)
+  - Version: 1.0.8+41204
+
+### Other Platforms
+
+- **iOS**: Build from source (requires Xcode and Apple Developer account)
+- **macOS**: Build from source using `flutter build macos`
+- **Web**: Build from source using `flutter build web`
+- **Windows/Linux**: Build from source using `flutter build <platform>`
+
+*For installation instructions and building from source, see the [Development](#-development) section below.*
+
+## �🚀 Quick Start
 
 ### Prerequisites
 
